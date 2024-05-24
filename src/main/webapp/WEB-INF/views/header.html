@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<title>Home Page</title>
+		<link rel="stylesheet" type="text/css" href="css/style.css" />
+	</head>
+	
+	<body>
+		<div th:fragment="menu">
+			<nav class="navbar	navbar-expand-lg menu">
+			  <div class="container-fluid">
+			    <a class="navbar-brand text-white" href="#">
+			      <img src="/img/book.png" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
+			      ENSAF LIBRARY
+			    </a>
+				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+				     <span class="navbar-toggler-icon"></span>
+				  </button>
+				   <div class="collapse navbar-collapse display-flex justify-content-end" id="navbarNav">
+				     <ul class="navbar-nav">
+				       <li class="nav-item mx-3">
+				         <a class="nav-link text-white" aria-current="page" href="/"><i class="fa fa-home" style="font-size:20px"></i> Home</a>
+				       </li>
+				       <li class="nav-item mx-3">
+				         <a class="nav-link text-white" href="/available-books">Available Books</a>
+				       </li>
+				       <li class="nav-item mx-3">
+				         <a class="nav-link	text-white" href="">My Books</a>
+				       </li>
+				       <li class="nav-item mx-3">
+				         <a class="nav-link text-white" href="/add-book">Add Book</a>
+				       </li>
+					   <li class="nav-item mx-3">
+					     <a class="nav-link text-white"	href="#"><i class="fa fa-sign-out" style="font-size:20px"></i> Logout</a>
+					   </li>
+				     </ul>
+				   </div>
+
+			  </div>
+			</nav>
+		</div>
+		
+		
+	</body>
+</html>

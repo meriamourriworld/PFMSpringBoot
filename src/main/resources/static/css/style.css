@@ -1,0 +1,14 @@
+*
+{
+	margin:0;
+	padding:0;
+	box-sizing: border-box;
+}
+.menu
+{
+	background-color: #4b1ea4;
+}
+.booksTable
+{
+	width: 50%;
+}
