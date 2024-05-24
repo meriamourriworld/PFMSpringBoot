@@ -26,7 +26,7 @@ public class BookController {
 	
 	
 	//GET Available BOOKS
-	@GetMapping("/available-books")
+	@GetMapping("/user/available-books")
 	public String getAllBooks(Model model)
 	{
 	    List<Book> listBooks = bookService.findAllBooks();
@@ -35,13 +35,13 @@ public class BookController {
 	}
 	
 	//Save a BOOK
-	@GetMapping("/add-book")
+	@GetMapping("/user/add-book")
 	public String addBook()
 	{
 		return "book/add-book";
 	}
 
-	@PostMapping("/available-books")
+	@PostMapping("/user/available-books")
 	public String registerBook(@RequestParam("author") String author, @RequestParam("name") String name, @RequestParam("price") int price)
 	{
 		System.out.println("req params "+author);
@@ -50,11 +50,29 @@ public class BookController {
 	}
 	
 	//CRUD ON AVAILABLE BOOKS
-	@GetMapping("/reservations/addMyBook/{id}")
+	//Book a book
+	@GetMapping("/user/reservations/addMyBook/{id}")
 	public String addBookReservation(@PathVariable("id") int id)
 	{
 		Book foundBook = bookService.findById(id);
 		myBooksService.addMyBook(new MyBooks(foundBook.getId(), foundBook.getName(), foundBook.getAuthor(), foundBook.getPrice()));
 		return "redirect:/my-books";
+	}
+	
+	//Delete a Book
+	@GetMapping("/user/deleteBook/{id}")
+	public String deleteBook(@PathVariable("id") int id)
+	{
+		bookService.deleteById(id);
+		return "redirect:/available-books";
+	}
+	
+	//Edit a Book
+	@GetMapping("/user/editBook/{id}")
+	public String editBook(@PathVariable("id") int id, Model model)
+	{
+		Book foundBook = bookService.findById(id);
+		model.addAttribute("book", foundBook);
+		return "book/edit-book";
 	}
 }

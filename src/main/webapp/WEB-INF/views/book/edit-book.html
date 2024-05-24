@@ -11,22 +11,22 @@
 	
 	<body>
 		<div th:insert="~{header :: menu}"></div>
-		<h1 class="text-center mt-5">New Book on Shelves</h1>
+		<h1 class="text-center mt-5">Edit Book</h1>
 		<div class="col-6 mx-auto mt-5">
-			<form th:action="@{/user/available-books}" method="post">
+			<form th:action="@{/user/add-book}" method="post">
 				<div class="mb-3">
 				  <label for="author" class="form-label">Author</label>
-				  <input type="text" class="form-control" name="author" id="author" placeholder="Author">
+				  <input type="text" class="form-control" name="author" id="author" th:value="${book.author}">
 				</div>
 
 				<div class="mb-3">
 				  <label for="name" class="form-label">Name</label>
-				  <input type="text" class="form-control" name="name" id="name" placeholder="Book Title">
+				  <input type="text" class="form-control" name="name" id="name" th:value="${book.name}">
 				</div>
 				
 				<div class="mb-3">
 				  <label for="price" class="form-label">Price</label>
-				  <input type="text" class="form-control" name="price" id="price" placeholder="Price">
+				  <input type="text" class="form-control" name="price" id="price" th:value="${book.price}">
 				</div>
 				<div class="col-12">
 				    <button type="submit" class="btn btn-success mb-3 col-12">Save Book</button>

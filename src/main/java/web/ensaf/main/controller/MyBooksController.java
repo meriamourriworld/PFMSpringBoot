@@ -14,7 +14,7 @@ public class MyBooksController {
 	@Autowired
 	MyBooksServiceImpl myBooksService;
 	
-	@GetMapping("/my-books")
+	@GetMapping("/user/my-books")
 	public String getMyBooks(Model model)
 	{
 		model.addAttribute("myBooks", myBooksService.findMyReservations());
