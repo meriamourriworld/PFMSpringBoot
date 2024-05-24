@@ -11,9 +11,9 @@
 	
 	<body>
 		<div th:insert="~{header :: menu}"></div>
-		<h1 class="text-center mt-5">New Book</h1>
+		<h1 class="text-center mt-5">New Book on Shelves</h1>
 		<div class="col-6 mx-auto mt-5">
-			<form action="/available-books" method="post">
+			<form th:action="@{/available-books}" method="post">
 				<div class="mb-3">
 				  <label for="author" class="form-label">Author</label>
 				  <input type="text" class="form-control" name="author" id="author" placeholder="Author">

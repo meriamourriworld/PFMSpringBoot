@@ -11,26 +11,26 @@
 	
 	<body>
 		<div th:insert="~{header :: menu}"></div>
-		<h1 class="text-center mt-5">Available Books</h1>
+		<h1 class="text-center mt-5">My Reservations</h1>
 		<div class="d-flex justify-content-center">
 			<table class="table table-stripped table-hover booksTable mt-5 text-center">
 				<thead>
 					<tr>
-						<td class="bg-success text-light">ID</td>
-						<td class="bg-dark text-light">AUTHOR</td>
-						<td class="bg-dark text-light">NAME</td>
-						<td class="bg-dark text-light">PRICE</td>
-						<td class="bg-danger text-light">ACTIONS</td>
+						<td class="table-head">ID</td>
+						<td class="table-head">AUTHOR</td>
+						<td class="table-head">NAME</td>
+						<td class="table-head">PRICE</td>
+						<td class="bg-dark text-light">ACTIONS</td>
 					</tr>
 			    </thead>
-			    <tbody th:each="book : ${books}">
+			    <tbody th:each="book : ${myBooks}">
 					
 			      <tr>
 					<td th:text="${book.id}" contenteditable="true"></td>
 					<td th:text="${book.author}" contenteditable="true"></td>
 					<td th:text="${book.name}" contenteditable="true"></td>
 					<td th:text="${book.price}" contenteditable="true"></td>
-				    <td></td>
+				    <td><a th:href="@{/deleteBook/{id}(id=${book.id})}"><i class="fa fa-trash"></i></a></td>
 				  </tr>
 	  		     
 			    </tbody>
