@@ -33,4 +33,9 @@ public class BookServiceImpl implements BookService{
 		brepo.deleteById(id);
 	}
 
+	@Override
+	public void updateBook(Book book) {
+		brepo.save(book);
+	}
+
 }

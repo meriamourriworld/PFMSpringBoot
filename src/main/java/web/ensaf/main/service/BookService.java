@@ -10,4 +10,5 @@ public interface BookService {
 	public Book findById(int id);
 	public void saveBook(Book book);
 	public void deleteById(int id);
+	void updateBook(Book book);
 }

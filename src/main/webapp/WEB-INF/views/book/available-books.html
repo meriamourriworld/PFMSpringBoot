@@ -27,10 +27,10 @@
 			    <tbody th:each="book : ${books}">
 					
 			      <tr>
-					<td th:text="${book.id}" contenteditable="true"></td>
-					<td th:text="${book.author}" contenteditable="true"></td>
-					<td th:text="${book.name}" contenteditable="true"></td>
-					<td th:text="${book.price}" contenteditable="true"></td>
+					<td th:text="${book.id}"></td>
+					<td th:text="${book.author}"></td>
+					<td th:text="${book.name}"></td>
+					<td th:text="${book.price}"></td>
 				    <td>
 						<a th:href="@{/user/reservations/addMyBook/{id}(id=${book.id})}" class="text-secondary mx-2"><i class="fa fa-bookmark" aria-hidden="true"></i></a>
 						<a th:href="@{/user/editBook/{id}(id=${book.id})}" class="text-success mx-2"><i class="fa fa-pencil" aria-hidden="true"></i></a>

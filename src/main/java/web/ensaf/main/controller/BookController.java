@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import web.ensaf.main.model.Book;
@@ -44,9 +45,8 @@ public class BookController {
 	@PostMapping("/user/available-books")
 	public String registerBook(@RequestParam("author") String author, @RequestParam("name") String name, @RequestParam("price") int price)
 	{
-		System.out.println("req params "+author);
 		bookService.saveBook(new Book(author, name, price));
-		return "redirect:/available-books";
+		return "redirect:/user/available-books";
 	}
 	
 	//CRUD ON AVAILABLE BOOKS
@@ -56,7 +56,7 @@ public class BookController {
 	{
 		Book foundBook = bookService.findById(id);
 		myBooksService.addMyBook(new MyBooks(foundBook.getId(), foundBook.getName(), foundBook.getAuthor(), foundBook.getPrice()));
-		return "redirect:/my-books";
+		return "redirect:/user/my-books";
 	}
 	
 	//Delete a Book
@@ -64,7 +64,7 @@ public class BookController {
 	public String deleteBook(@PathVariable("id") int id)
 	{
 		bookService.deleteById(id);
-		return "redirect:/available-books";
+		return "redirect:/user/available-books";
 	}
 	
 	//Edit a Book
@@ -74,5 +74,16 @@ public class BookController {
 		Book foundBook = bookService.findById(id);
 		model.addAttribute("book", foundBook);
 		return "book/edit-book";
+	}
+	
+	@PostMapping("/user/updateBook")
+	public String updateBook(@RequestParam("id")int id,@RequestParam("author") String author, @RequestParam("name") String name, @RequestParam("price") int price)
+	{
+		Book foundBook = bookService.findById(id);
+		foundBook.setAuthor(author);
+		foundBook.setName(name);
+		foundBook.setPrice(price);
+		bookService.updateBook(foundBook);
+		return "redirect:/user/available-books";
 	}
 }

@@ -21,10 +21,10 @@ public class MyBooksController {
 		return "book/my-books";
 	}
 	
-	@GetMapping("/deleteBook/{id}")
+	@GetMapping("/user/deleteMyBook/{id}")
 	public String deleteMyBooks(@PathVariable("id") int id)
 	{
 		myBooksService.deleteReservation(id);
-		return "redirect:/my-books";
+		return "redirect:/user/my-books";
 	}
 }
